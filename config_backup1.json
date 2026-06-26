@@ -1,0 +1,31 @@
+
+
+{
+  "Settings": {
+
+    "AppName": "EQD2Gy",
+
+    "Tag_In_Plan_Comment": "Tag_EQD2_DoNotRemoveThisTag",
+
+    "urlBase": "https://uhroappwebspr1.umhs.med.umich.edu:8094/eqd2/",
+
+    "path_to_CourseCreatingExe": "\\\\uhrofilespr1\\EclipseScripts\\Aria15\\Development\\JY\\ModularizedCode\\ConsoleApp_CreateCourseESAPI\\bin\\x64\\Debug\\ConsoleApp_CreateCourseESAPI.exe",
+
+    "useIndividualLogin": true,
+
+
+    "userName": "yuayao- has to be configured only if useIndividualLogin = false",
+    "password": "has to be configured only if useIndividualLogin = false",
+
+    "prefix_PlanID": "$Bio_",
+    "suffix_PlanID": "",
+
+    "prefix_CourseID": "$Bio_",
+    "suffix_CourseID": "",
+
+    "Warning": "Please first create a new course and save it in Eclipse manually to store the EQD2 plans going to be created. Or the created plans will go to the latest non-completed course in the patient.\n\nClick OK to continue and use the latest non-completed course\n\nClick Cancel to go back and create the course first",
+
+
+    "Notes": "!!! (1) The newly created EQD2 plans will go to the latest non-completed course in the patient. (2) After script finishes (shouldn't take longer than 1 minute per plan) please open/load the newly created EQD2 plans manually. You may need to close and re-open patient first to see the new plans."
+  }
+}

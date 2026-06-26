@@ -1,0 +1,199 @@
+﻿<Window x:Class="BioDoseUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BioDoseUI" 
+        xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        Title="Bio EQD2Gy Dose" MinHeight="200" MinWidth="600">
+
+
+    <Window.Resources>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <!--padding not working here-->
+            <Setter Property="Padding" Value="5 10 5 10"/>
+        </Style>
+
+        <Style x:Key="centerTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <!--padding not working here-->
+            <Setter Property="Padding" Value="6 3"/>
+        </Style>
+
+        <CollectionViewSource x:Key="GroupedPlanInfoList_ByCourse" Source="{Binding PlanInfoList}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="CourseID"/>
+            </CollectionViewSource.GroupDescriptions>
+            <CollectionViewSource.SortDescriptions>
+                <!--<componentmodel:SortDescription PropertyName="PlanID" />-->
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+    </Window.Resources>
+
+    <DockPanel>
+
+        <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" MaxHeight="800">
+            
+        <DataGrid x:Name="PlanList" MinHeight="120" Margin="10 10"
+                AutoGenerateColumns="False"
+                  HorizontalAlignment="Left"
+                  Width="auto"
+                  GridLinesVisibility="All"
+                  EnableRowVirtualization="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  ItemsSource="{Binding Source={StaticResource GroupedPlanInfoList_ByCourse}}"
+                  HeadersVisibility="Column"
+                   LoadingRow="MyDataGrid_LoadingRow"
+                   Loaded="MyDataGrid_Loaded"
+                  >
+
+
+
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <Border Background="White" Padding="5" Margin="0,5,0,5">
+                                <StackPanel Orientation="Horizontal">
+                                    
+                                    <TextBlock FontSize="17" 
+                                    Text="{Binding Name}"
+                                    Foreground="RoyalBlue"
+                                    FontWeight="Bold" VerticalAlignment="Bottom"/>
+
+                                    <TextBlock Text="{Binding Items[0].CourseStatus}" Margin="8,0" FontWeight="Bold" VerticalAlignment="Bottom"/>
+
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                    
+                    
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,0,0">
+                                            <!-- this is the line that adds the top border -->
+                                            <StackPanel>
+                                                <ContentPresenter />
+                                                <!-- Header -->
+                                                <ItemsPresenter />
+                                                <!-- Items -->
+                                            </StackPanel>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="Padding" Value="10 6"/>
+
+
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="CourseID" Binding="{Binding CourseID}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}">
+                   
+                </DataGridTextColumn>
+
+                <!--<DataGridTextColumn Header="NewCourseID" Binding="{Binding NewCourseID}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}">
+
+                </DataGridTextColumn>-->
+
+
+                <DataGridTextColumn Header="PlanID" Binding="{Binding PlanID}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}">
+                 
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Plan Status" Binding="{Binding PlanStatus}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}">
+
+                </DataGridTextColumn>
+                
+                
+                <DataGridTextColumn Header="New PlanID" Binding="{Binding NewPlanID}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}">
+                    
+                </DataGridTextColumn>
+
+
+
+                <DataGridTextColumn Header="Rx Fraction" Binding="{Binding RxFraction}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}" />
+
+
+                <DataGridTextColumn Header="alpha/beta" Binding="{Binding Alphabeta, StringFormat={}{0:F2}}" ElementStyle="{StaticResource centerTextBlock}" />
+
+
+                <!--<DataGridCheckBoxColumn Header="Used In Analysis" Binding="{Binding ifUsedInAnalysis, UpdateSourceTrigger=PropertyChanged}"/>-->
+
+
+                <DataGridTemplateColumn Header="If Calculate bio dose">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=IfUsed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Width="220" Header="Status" Binding="{Binding Status}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}">
+                   
+                </DataGridTextColumn>
+                
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        </ScrollViewer>
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10"
+                    Visibility="{Binding UseIndividualLogin, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    >
+
+            <Label FontSize="14" FontWeight="Bold" ToolTip="A new course with specified ID will be created and hold EQD2Gy evaluation plans to be created">New CourseID:</Label>
+
+            <TextBox x:Name="singleNewCourseID" Width="220" VerticalContentAlignment="Center" Padding="3 0"></TextBox>
+
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10 10">
+            
+            <Button Padding="20 3" FontSize="14" Content="OK, proceed to calculate Bio Doses of selected plans" HorizontalAlignment="Right" Margin="0 8 16 8" VerticalAlignment="Bottom" Click="OKButton_Click"/>
+
+
+            <Button x:Name="CancelBtn" Margin="15 8" Padding="30 3" FontSize="14" Content="Cancel" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Click="CancelButton_Click"/>
+        </StackPanel>
+
+
+        <StackPanel DockPanel.Dock="Top" Margin="10">
+            <TextBlock FontSize="14" Padding="5" TextAlignment="Left" Foreground="Red" Text="{Binding error_msg}"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="10" >
+            <TextBlock MaxWidth="800" TextWrapping="Wrap" FontSize="14" Padding="5" TextAlignment="Left" Text="{Binding Notes}"></TextBlock>
+        </StackPanel>
+
+    </DockPanel>
+</Window>
