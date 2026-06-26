@@ -13,10 +13,6 @@
 
         "useIndividualLogin": true,
 
-
-        "userName": "yuayao- has to be configured only if useIndividualLogin = false",
-        "password": "has to be configured only if useIndividualLogin = false",
-
         "prefix_PlanID": "$Bio_",
         "suffix_PlanID": "",
 

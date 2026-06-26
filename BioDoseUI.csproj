@@ -94,7 +94,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="config_backup1.json" />
     <None Include="config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
