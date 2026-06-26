@@ -4,6 +4,8 @@
 - Andrew Bennent (L)
 - Martha Matuszak (F, V)
 - Joann Priscindaro (V)
+- Kelly Kisling (V)
+- Brian Anderson (brianmanderson) (V)
 
 For code contributions see also: 
 https://github.com/RadOncDev/O3_Input-SourceCode/graphs/contributors
