@@ -23,8 +23,6 @@ namespace BioDoseUI
 
         Patient pat;
 
-        string urlBase = JsonConfig.ReadSetting<string>("urlBase");
-
 
         string NewCourseID(string oldID)
         {

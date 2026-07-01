@@ -7,12 +7,6 @@
 
         "Tag_In_Plan_Comment": "NOT_For_Treatment_EQD2Gy_Evaluation",
 
-        "urlBase": "https://uhroappwebspr1.umhs.med.umich.edu:8094/eqd2/",
-
-        "path_to_CourseCreatingExe": "\\\\uhrofilespr1\\EclipseScripts\\Aria15\\Shared\\ConsoleApp_CreateCourseESAPI\\ConsoleApp_CreateCourseESAPI.exe",
-
-        "useIndividualLogin": true,
-
         "prefix_PlanID": "$Bio_",
         "suffix_PlanID": "",
 

@@ -86,7 +86,7 @@ namespace BioDoseUI
                 }
 
 
-                string path = JsonConfig.ReadSetting<string>("path_to_CourseCreatingExe");
+              
 
                 Log3_static.writeBlankLines(1);
 

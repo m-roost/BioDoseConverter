@@ -169,7 +169,6 @@
         </ScrollViewer>
 
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10"
-                    Visibility="{Binding UseIndividualLogin, Converter={StaticResource BooleanToVisibilityConverter}}"
                     >
 
             <Label FontSize="14" FontWeight="Bold" ToolTip="A new course with specified ID will be created and hold EQD2Gy evaluation plans to be created">New CourseID:</Label>

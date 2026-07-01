@@ -7,3 +7,20 @@ THE INFORMATION AND SOFTWARE HEREIN ARE PROVIDED "AS IS" AND WITHOUT ANY WARRANT
 # About
 The application is an Eclipse binary plugin script, which takes existing plans and convert their physical doses into EQD2Gy doses, and place EQD2Gy dose in newly created course and plans.
 
+# How to Deploy
+After download and successfully build the project (with x64 configuration), this program runs as an Eclipse binary script plugin:
+
+<div style="text-align: center;">
+    <img src="./Doc/images/01_EclipseScriptMenu.JPG" alt="Sample Image" width="400" style="border: 2px solid black;"/>
+</div>
+<br>
+
+<div style="text-align: center;">
+    <img src="./Doc/images/02_Script_window.JPG" alt="Sample Image" width="400" style="border: 2px solid black;"/>
+</div>
+<br>
+
+<div style="text-align: center;">
+    <img src="./Doc/images/03_main_UI.JPG" alt="Sample Image" width="600" style="border: 2px solid black;"/>
+</div>
+<br>
