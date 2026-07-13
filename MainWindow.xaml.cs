@@ -90,6 +90,13 @@ namespace BioDoseUI
 
                 Log3_static.writeBlankLines(1);
 
+                if(pat.Courses.Select(c=> c.Id.ToUpper()).Contains(singleNewCourseID.Text.ToUpper()))
+                {
+                    MessageBox.Show("New Course ID already exists. Please rename New CourseID", "Error - EQD2Gy");
+
+                    return;
+                }
+
 
                 pat.BeginModifications();
 
@@ -103,7 +110,7 @@ namespace BioDoseUI
                 
                 btn.IsEnabled = false;
 
-                await VM.ProcessRows(pat, newC);
+                await VM.ProcessRows(pat, newC, btn);
 
                 CancelBtn.Content = "Close";
             }

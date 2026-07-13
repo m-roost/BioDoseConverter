@@ -133,7 +133,7 @@
                 </DataGridTextColumn>
                 
                 
-                <DataGridTextColumn Header="New PlanID" Binding="{Binding NewPlanID}" IsReadOnly="True" ElementStyle="{StaticResource centerTextBlock}">
+                <DataGridTextColumn Header="New PlanID" Binding="{Binding NewPlanID}" IsReadOnly="False" ElementStyle="{StaticResource centerTextBlock}">
                     
                 </DataGridTextColumn>
 

@@ -182,10 +182,35 @@ namespace BioDoseUI
 
         //public IEnumerable<PlanSetup> PlanSetupsInScope { get; }
 
-        internal async Task ProcessRows(Patient pat, Course newC)
+        private static string GetDuplicateSummary(IEnumerable<string> items)
+        {
+            var duplicates = items
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .GroupBy(s => s, StringComparer.OrdinalIgnoreCase)
+                .Where(g => g.Count() > 1)
+                .Select(g => $"{g.Key} ({g.Count()} times)")
+                .ToList();
+
+            return duplicates.Any()
+                ? $"Duplicate new PlanID found: {string.Join(", ", duplicates)}"
+                : string.Empty;
+        }
+
+        internal async Task ProcessRows(Patient pat, Course newC, System.Windows.Controls.Button btn)
         {
             try
             {
+                var dup_msg = GetDuplicateSummary(PlanInfoList.Select(t => t.NewPlanID));
+
+                if (!string.IsNullOrEmpty(dup_msg))
+                {
+                    MessageBox.Show(dup_msg + "\n\nPlease rename some of the New Plan IDs", "Error - EQD2Gy");
+
+                    btn.IsEnabled = true;
+
+                    return;
+                }
+
                 foreach (var pl in PlanInfoList.Where(t => t.IfUsed))
                 {
                     Log3_static.writeBlankLines(1);

@@ -13,7 +13,7 @@
         "prefix_CourseID": "$Bio_",
         "suffix_CourseID": "",
 
-        "Warning": "Please first create a new course and save it in Eclipse manually to store the EQD2Gy plans going to be created. Or the created plans will go to the latest non-completed course in the patient.\n\nClick OK to continue and use the latest non-completed course\n\nClick Cancel to go back and create the course first",
+        "Warning": "",
 
 
         "Notes": "After script finishes (shouldn't take longer than 1 minute per plan), the newly created EQD2Gy plans will be loaded in the newly created Course in Eclipse, but they are not saved yet. You can Save or Discard them in Eclipse."
